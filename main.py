@@ -1,3 +1,5 @@
+from tkinter import *
+from PIL import Image, ImageTk
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
@@ -15,23 +17,19 @@ LONG_BREAK_MIN = 20
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 
 # ---------------------------- UI SETUP ------------------------------- #
-from tkinter import *
-from PIL import Image, ImageTk
+
 
 window = Tk()
 window.minsize(width=600, height=400)
+window.title("POMODORO")
 
-
+canvas = Canvas(width=200, height=224)
 title_label = Label(text="TIMER", font=(FONT_NAME, 25), fg=GREEN)
 title_label.place(x=250, y=15)
 
-
-apple_image = Image.open("tomato.png")
-apple_image_tk = ImageTk.PhotoImage(apple_image)
-
-apple_label = Label(image=apple_image_tk)
-apple_label.image = apple_image_tk
-apple_label.place(x=200, y=50)
+apple_image = PhotoImage(file="tomato.png")
+canvas.create_image(100, 112, image=apple_image)
+canvas.pack()
 
 timer_label = Label(text="00:00", fg=GREEN, font=(FONT_NAME, 10))
 timer_label.place(x=280, y=170)
