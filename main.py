@@ -23,22 +23,22 @@ window.title("POMODORO")
 window.config(padx=100, pady=50, bg=YELLOW)
 
 canvas = Canvas(width=200, height=250, bg=YELLOW, highlightthickness=0)
-# title_label = Label(text="TIMER", font=(FONT_NAME, 25), fg=GREEN)
-# title_label.place(x=50, y=5)
+title_label = Label(text="Timer", font=(FONT_NAME, 25, "bold"), fg=GREEN, bg=YELLOW)
+title_label.grid(column=1, row=0)
 
 apple_image = PhotoImage(file="tomato.png")
 canvas.create_image(100, 112, image=apple_image)
 canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
-canvas.pack()
+canvas.grid(column=1, row=1)
 
-# timer_label = Label(text="00:00", fg=GREEN, font=(FONT_NAME, 10))
-# timer_label.place(x=180, y=170)
-#
-# start_button = Button(text="Start", font=(FONT_NAME, 15))
-# start_button.place(x=100, y=300)
-#
-# stop_button = Button(text="Stop", font=(FONT_NAME, 15))
-# stop_button.place(x=350, y=300)
+check_label = Label(text="✔", font=(FONT_NAME, 25), fg=GREEN, bg=YELLOW)
+check_label.grid(column=1, row=3)
+
+start_button = Button(text="Start", font=(FONT_NAME, 10), highlightthickness=0)
+start_button.grid(column=0, row=3)
+
+stop_button = Button(text="Restart", font=(FONT_NAME, 10), highlightthickness=0)
+stop_button.grid(column=2, row=3)
 
 
 window.mainloop()
