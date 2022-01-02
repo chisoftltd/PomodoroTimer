@@ -23,14 +23,16 @@ def cancel_timer():
     canvas.itemconfig(canvas_timer, text=f"00:00")
     title_label.config(text="Timer", fg=GREEN)
     check_label.config(text="")
-# ---------------------------- TIMER MECHANISM ------------------------------- # 
+
+
+# ---------------------------- TIMER MECHANISM ------------------------------- #
 def timer_count():
     global reps
     reps += 1
 
-    work_sec = 1.5 * 60 # WORK_MIN * 60
-    short_break_sec = 0.5 * 60 # SHORT_BREAK_MIN * 60
-    long_break_sec = 1 * 60 # LONG_BREAK_MIN * 60
+    work_sec = 1.5 * 60  # WORK_MIN * 60
+    short_break_sec = 0.5 * 60  # SHORT_BREAK_MIN * 60
+    long_break_sec = 1 * 60  # LONG_BREAK_MIN * 60
 
     if reps % 8 == 0:
         count_down(long_break_sec)
@@ -58,7 +60,7 @@ def count_down(count):
     else:
         timer_count()
         marks = ""
-        work_sessions = math.floor(reps/2)
+        work_sessions = math.floor(reps / 2)
         for _ in range(work_sessions):
             marks += "✔"
         check_label.config(text=marks)
