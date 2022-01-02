@@ -21,8 +21,8 @@ def timer_count():
     global reps
     reps += 1
 
-    work_sec = 1 * 60 # WORK_MIN * 60
-    short_break_sec = 1 * 60 # SHORT_BREAK_MIN * 60
+    work_sec = 1.5 * 60 # WORK_MIN * 60
+    short_break_sec = 0.5 * 60 # SHORT_BREAK_MIN * 60
     long_break_sec = 1 * 60 # LONG_BREAK_MIN * 60
 
     if reps % 8 == 0:
@@ -49,6 +49,11 @@ def count_down(count):
         window.after(1000, count_down, count - 1)
     else:
         timer_count()
+        marks = ""
+        work_sessions = math.floor(reps/2)
+        for _ in range(work_sessions):
+            marks += "✔"
+        check_label.config(text=marks)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -66,7 +71,7 @@ canvas.create_image(100, 112, image=apple_image)
 canvas_timer = canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.grid(column=1, row=1)
 
-check_label = Label(text="✔", font=(FONT_NAME, 25), fg=GREEN, bg=YELLOW)
+check_label = Label(font=(FONT_NAME, 25), fg=GREEN, bg=YELLOW)
 check_label.grid(column=1, row=3)
 
 start_button = Button(text="Start", font=(FONT_NAME, 10), highlightthickness=0, command=timer_count)
